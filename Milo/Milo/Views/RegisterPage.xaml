@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Milo.Views.RegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Milo.Controls"
+    xmlns:ext="clr-namespace:Milo.Extensions"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:prism="http://prismlibrary.com"
+    ios:Page.UseSafeArea="True"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource AppBackground}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image
+            Margin="15"
+            HorizontalOptions="Start"
+            Source="{StaticResource BackImage}"
+            VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+            </Image.GestureRecognizers>
+        </Image>
+        <ScrollView>
+            <StackLayout Margin="20,0,20,0" HorizontalOptions="FillAndExpand">
+
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="200"
+                    HorizontalOptions="Center"
+                    Source="dashboard11"
+                    VerticalOptions="Center" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="{ext:Translate Registration}"
+                    TextColor="{StaticResource AppTextColor}" />
+
+                <StackLayout>
+                    <controls:ClassicEntry
+                        x:Name="fullNameEntry"
+                        Margin="5,5"
+                        BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HeightRequest="40"
+                        Keyboard="Text"
+                        Placeholder="{ext:Translate Enter_Full_Name}"
+                        PlaceholderColor="{StaticResource AppTextHintColor}"
+                        Text="{Binding FullName}"
+                        TextColor="{StaticResource AppTextColor}"
+                        VerticalTextAlignment="Center"
+                        Visual="Material" />
+                    <controls:ClassicEntry
+                        x:Name="emailAddressEntry"
+                        Margin="5,5"
+                        BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HeightRequest="40"
+                        Keyboard="Email"
+                        Placeholder="{ext:Translate Enter_Email_Address}"
+                        PlaceholderColor="{StaticResource AppTextHintColor}"
+                        Text="{Binding EmailAddress}"
+                        TextColor="{StaticResource AppTextColor}"
+                        VerticalTextAlignment="Center"
+                        Visual="Material" />
+                    <Picker
+                        x:Name="countryPicker"
+                        Title="{ext:Translate Select_Country}"
+                        Margin="5,5"
+                        BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                        ItemsSource="{Binding Timezones.data}"
+                        SelectedItem="{Binding Timezone}"
+                        TextColor="{StaticResource AppTextColor}"
+                        TitleColor="{StaticResource AppTextHintColor}" />
+                    <controls:ClassicEntry
+                        x:Name="passwordEntry"
+                        Margin="5,5"
+                        BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HeightRequest="40"
+                        IsPassword="True"
+                        Keyboard="Text"
+                        NavigationPage.HasNavigationBar="False"
+                        Placeholder="{ext:Translate Password}"
+                        PlaceholderColor="{StaticResource AppTextHintColor}"
+                        Text="{Binding Password}"
+                        TextColor="{StaticResource AppTextColor}"
+                        VerticalTextAlignment="Center"
+                        Visual="Material" />
+                    <controls:ClassicEntry
+                        x:Name="confpasswordEntry"
+                        Margin="5,5"
+                        BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HeightRequest="40"
+                        IsPassword="True"
+                        Keyboard="Text"
+                        NavigationPage.HasNavigationBar="False"
+                        Placeholder="{ext:Translate Confirm_Password}"
+                        PlaceholderColor="{StaticResource AppTextHintColor}"
+                        Text="{Binding ConfPassword}"
+                        TextColor="{StaticResource AppTextColor}"
+                        VerticalTextAlignment="Center"
+                        Visual="Material" />
+                    <ImageButton
+                        BackgroundColor="Transparent"
+                        Command="{Binding RegisterCommand}"
+                        Source="register_button"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

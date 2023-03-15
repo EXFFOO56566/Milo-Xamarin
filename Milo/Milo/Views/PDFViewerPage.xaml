@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Milo.Views.PDFViewerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Milo.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:prism="http://prismlibrary.com"
+    ios:Page.UseSafeArea="True"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource AppBackground}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image
+            Margin="15"
+            HorizontalOptions="Start"
+            Source="{StaticResource BackImage}"
+            VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+            </Image.GestureRecognizers>
+        </Image>
+        <Grid>
+            <WebView
+                BackgroundColor="Transparent"
+                HeightRequest="1000"
+                Navigated="WebView_Navigated"
+                Navigating="WebView_Navigating"
+                Source="{Binding TakewayDocumentLink}"
+                WidthRequest="1000" />
+            <ActivityIndicator
+                HorizontalOptions="CenterAndExpand"
+                IsEnabled="{Binding IsLoading}"
+                IsRunning="{Binding IsLoading}"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="CenterAndExpand" />
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Milo.Views.UserProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:circleImage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:controls="clr-namespace:Milo.Controls"
+    xmlns:ext="clr-namespace:Milo.Extensions"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:prism="http://prismlibrary.com"
+    ios:Page.UseSafeArea="True"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource AppBackground}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image
+            Margin="15"
+            HorizontalOptions="Start"
+            Source="{StaticResource BackImage}"
+            VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+            </Image.GestureRecognizers>
+        </Image>
+        <ScrollView>
+            <StackLayout
+                Margin="10"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="{ext:Translate User_Profile}"
+                    TextColor="{StaticResource AppTextColor}" />
+
+
+                <circleImage:CircleImage
+                    Aspect="AspectFill"
+                    BorderColor="White"
+                    BorderThickness="2"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="{Binding ImgCaptureImage}"
+                    VerticalOptions="Start"
+                    WidthRequest="80">
+                    <circleImage:CircleImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PickupImageCommand}" NumberOfTapsRequired="1" />
+                    </circleImage:CircleImage.GestureRecognizers>
+                </circleImage:CircleImage>
+
+                <controls:ClassicEntry
+                    x:Name="fullNameEntry"
+                    Margin="5,5"
+                    BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    HeightRequest="40"
+                    Keyboard="Text"
+                    Placeholder="{ext:Translate Enter_Full_Name}"
+                    PlaceholderColor="{StaticResource AppTextHintColor}"
+                    Text="{Binding FullName}"
+                    TextColor="{StaticResource AppTextColor}"
+                    VerticalTextAlignment="Center"
+                    Visual="Material" />
+                <Picker
+                    x:Name="countryPicker"
+                    Title="{ext:Translate Select_Country}"
+                    Margin="5,5"
+                    BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                    ItemsSource="{Binding Timezones.data}"
+                    SelectedItem="{Binding Timezone}"
+                    TextColor="{StaticResource AppTextColor}"
+                    TitleColor="{StaticResource AppTextHintColor}" />
+                <controls:ClassicEntry
+                    x:Name="address"
+                    Margin="5,5"
+                    BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    HeightRequest="40"
+                    Keyboard="Text"
+                    Placeholder="{ext:Translate Enter_Email_Address}"
+                    PlaceholderColor="{StaticResource AppTextHintColor}"
+                    Text="{Binding Address}"
+                    TextColor="{StaticResource AppTextColor}"
+                    VerticalTextAlignment="Center"
+                    Visual="Material" />
+                <controls:ClassicEntry
+                    x:Name="pin"
+                    Margin="5,5"
+                    BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    HeightRequest="40"
+                    Keyboard="Numeric"
+                    Placeholder="{ext:Translate Pin}"
+                    PlaceholderColor="{StaticResource AppTextHintColor}"
+                    Text="{Binding Pin}"
+                    TextColor="{StaticResource AppTextColor}"
+                    VerticalTextAlignment="Center"
+                    Visual="Material" />
+                <controls:ClassicEntry
+                    x:Name="mobile"
+                    Margin="5,5"
+                    BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    HeightRequest="40"
+                    Keyboard="Telephone"
+                    Placeholder="{ext:Translate PhoneNumber}"
+                    PlaceholderColor="{StaticResource AppTextHintColor}"
+                    Text="{Binding MobileNumber}"
+                    TextColor="{StaticResource AppTextColor}"
+                    VerticalTextAlignment="Center"
+                    Visual="Material" />
+                <controls:ClassicEntry
+                    x:Name="city"
+                    Margin="5,5"
+                    BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    HeightRequest="40"
+                    Keyboard="Text"
+                    Placeholder="{ext:Translate City}"
+                    PlaceholderColor="{StaticResource AppTextHintColor}"
+                    Text="{Binding City}"
+                    TextColor="{StaticResource AppTextColor}"
+                    VerticalTextAlignment="Center"
+                    Visual="Material" />
+                <controls:ClassicEntry
+                    x:Name="state"
+                    Margin="5,5"
+                    BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    HeightRequest="40"
+                    Keyboard="Text"
+                    Placeholder="{ext:Translate State}"
+                    PlaceholderColor="{StaticResource AppTextHintColor}"
+                    Text="{Binding State}"
+                    TextColor="{StaticResource AppTextColor}"
+                    VerticalTextAlignment="Center"
+                    Visual="Material" />
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Command="{Binding UpdateProfileCommand}"
+                    Source="submit_button"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    x:Class="Milo.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:ext="clr-namespace:Milo.Extensions"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    IsPresented="{Binding IsMenuPresented, Mode=TwoWay}">
+
+    <MasterDetailPage.Master>
+
+        <NavigationPage Title="Menu" Icon="group_1535.png">
+
+            <x:Arguments>
+                <ContentPage
+                    Title="{ext:Translate Milo}"
+                    BackgroundColor="{StaticResource UpcomingMeetingItemBackground}"
+                    NavigationPage.HasBackButton="False"
+                    NavigationPage.HasNavigationBar="False">
+
+                    <ListView
+                        BackgroundColor="{StaticResource UpcomingMeetingItemBackground}"
+                        ItemsSource="{Binding MenuItems}"
+                        RowHeight="60"
+                        SelectedItem="{Binding SelectedMenuItem}"
+                        SeparatorColor="LightGray"
+                        SeparatorVisibility="Default">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <!--  Main design for our menu items  -->
+                                    <StackLayout
+                                        Padding="20,10,0,10"
+                                        Orientation="Horizontal"
+                                        Spacing="20"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            HeightRequest="35"
+                                            Source="{Binding Icon}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="35" />
+
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="{Binding Title}"
+                                            TextColor="{StaticResource AppTextColor}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                        <ListView.Behaviors>
+                            <b:EventToCommandBehavior Command="{Binding NavigateCommand}" EventName="ItemTapped" />
+                        </ListView.Behaviors>
+
+                    </ListView>
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Milo.Views.MultiSelectListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Milo.Controls"
+    xmlns:ext="clr-namespace:Milo.Extensions"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:prism="http://prismlibrary.com"
+    ios:Page.UseSafeArea="True"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource AppBackground}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout
+        Margin="10"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="Fill">
+
+        <controls:ClassicEntry
+            x:Name="fullNameEntry"
+            BackgroundColor="{StaticResource AppTextBackgroundColor}"
+            FontAttributes="Bold"
+            FontSize="17"
+            HeightRequest="40"
+            HorizontalOptions="FillAndExpand"
+            Keyboard="Email"
+            Placeholder="{ext:Translate Enter_Email_Name}"
+            PlaceholderColor="{StaticResource AppTextHintColor}"
+            Text="{Binding Keyword}"
+            TextChanged="fullNameEntry_TextChanged"
+            TextColor="{StaticResource AppTextColor}"
+            VerticalTextAlignment="Center"
+            Visual="Material" />
+
+        <CollectionView
+            Margin="10"
+            BackgroundColor="{StaticResource AppBackground}"
+            ItemsSource="{Binding DataList}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="{StaticResource UpcomingMeetingItemBackground}" CornerRadius="10">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                            <StackLayout HeightRequest="50" Orientation="Vertical">
+                                <Label Text="{Binding name}" TextColor="White" />
+                                <Label Text="{Binding email_id}" TextColor="White" />
+                            </StackLayout>
+                            <CheckBox
+                                HorizontalOptions="EndAndExpand"
+                                IsChecked="{Binding Selected}"
+                                VerticalOptions="CenterAndExpand"
+                                Color="White" />
+
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <Button
+                    x:Name="btnFinish1"
+                    BackgroundColor="Transparent"
+                    Command="{Binding FinishCommand}"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding FinishText}"
+                    TextColor="Green"
+                    VerticalOptions="EndAndExpand">
+                    <Button.IsVisible>
+                        <OnPlatform
+                            x:TypeArguments="x:Boolean"
+                            Android="False"
+                            iOS="True" />
+                    </Button.IsVisible>
+                </Button>
+
+            </CollectionView.Footer>
+        </CollectionView>
+        <Button
+            x:Name="btnFinish2"
+            BackgroundColor="Transparent"
+            Command="{Binding FinishCommand}"
+            HorizontalOptions="FillAndExpand"
+            Text="{Binding FinishText}"
+            TextColor="Green"
+            VerticalOptions="EndAndExpand">
+            <Button.IsVisible>
+                <OnPlatform
+                    x:TypeArguments="x:Boolean"
+                    Android="True"
+                    iOS="False" />
+            </Button.IsVisible>
+        </Button>
+    </StackLayout>
+</ContentPage>

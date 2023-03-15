@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Milo.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Milo.Controls"
+    xmlns:ext="clr-namespace:Milo.Extensions"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:prism="http://prismlibrary.com"
+    ios:Page.UseSafeArea="True"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource AppBackground}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Margin="20,0,20,0">
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="200"
+                    HorizontalOptions="Center"
+                    Source="progresive_app_rafiki1"
+                    VerticalOptions="Center" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="{ext:Translate Login}"
+                    TextColor="{StaticResource AppTextColor}" />
+                <controls:ClassicEntry
+                    x:Name="passwordEntry"
+                    Margin="5,5"
+                    BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    HeightRequest="40"
+                    Keyboard="Email"
+                    Placeholder="{ext:Translate Email_Address}"
+                    PlaceholderColor="{StaticResource AppTextHintColor}"
+                    Text="{Binding EmailAddress}"
+                    TextColor="{StaticResource AppTextColor}"
+                    VerticalTextAlignment="Center"
+                    Visual="Material" />
+                <controls:ClassicEntry
+                    x:Name="usernameEntry"
+                    Margin="5,5"
+                    BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    HeightRequest="40"
+                    IsPassword="True"
+                    Keyboard="Text"
+                    NavigationPage.HasNavigationBar="False"
+                    Placeholder="{ext:Translate Password}"
+                    PlaceholderColor="{StaticResource AppTextHintColor}"
+                    Text="{Binding Password}"
+                    TextColor="{StaticResource AppTextColor}"
+                    VerticalTextAlignment="Center"
+                    Visual="Material" />
+                <StackLayout Margin="0,20,0,0" Orientation="Horizontal">
+                    <ImageButton
+                        BackgroundColor="Transparent"
+                        Command="{Binding LoginCommand}"
+                        Source="login_button"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        Margin="0,15,0,0"
+                        HorizontalOptions="EndAndExpand"
+                        Text="{ext:Translate Forgot_Password}"
+                        TextColor="{StaticResource AppTextColor}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </StackLayout>
+            </StackLayout>
+            <Label
+                Margin="0,0,0,50"
+                HorizontalOptions="Center"
+                LineBreakMode="WordWrap"
+                TextColor="{StaticResource AppTextColor}"
+                VerticalOptions="EndAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{ext:Translate Account_Not_Exist}" TextColor="{StaticResource AppTextColor}" />
+                        <Span
+                            FontAttributes="Bold"
+                            Text="{ext:Translate Signup}"
+                            TextColor="LightBlue">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RegisterCommand}" NumberOfTapsRequired="1" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

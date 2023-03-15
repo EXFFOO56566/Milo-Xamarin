@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    x:Class="Milo.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com">
+    <Application.Resources>
+        <Color x:Key="AppBackground">#232228</Color>
+        <Color x:Key="AppTextColor">#FFFFFF</Color>
+        <Color x:Key="AppTextBackgroundColor">#000000</Color>
+        <Color x:Key="AppTextHintColor">#626262</Color>
+        <Color x:Key="CurrentMeetingBackground">#5e5d75</Color>
+        <Color x:Key="UpcomingMeetingItemBackground">#35393f</Color>
+        <!--  Application resource dictionary  -->
+
+        <ResourceDictionary>
+            <OnPlatform
+                x:Key="BackImage"
+                x:TypeArguments="ImageSource"
+                Android="arrow.png"
+                WinPhone="arrow.png"
+                iOS="left_arrow.png" />
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

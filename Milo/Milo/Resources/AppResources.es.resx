@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Login" xml:space="preserve">
+    <value>Acceso</value>
+  </data>
+	<data name="Email_Address" xml:space="preserve">
+    <value>Dirección de correo electrónico</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Clave</value>
+  </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>¿Has olvidado tu contraseña?</value>
+  </data>
+  <data name="Account_Not_Exist" xml:space="preserve">
+    <value>¿No tienes una cuenta? </value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>Regístrate</value>
+  </data>
+  <data name="Forgot_Password_Title" xml:space="preserve">
+    <value>Has olvidado tu contraseña</value>
+  </data>
+  <data name="Enter_Full_Name" xml:space="preserve">
+    <value>Ingrese su nombre completo</value>
+  </data>
+  <data name="Enter_Email_Address" xml:space="preserve">
+    <value>Introducir la dirección de correo electrónico</value>
+  </data>
+  <data name="Select_Country" xml:space="preserve">
+    <value>Seleccionar país</value>
+  </data>
+  <data name="Confirm_Password" xml:space="preserve">
+    <value>confirmar Contraseña</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="Meeting_Requests" xml:space="preserve">
+    <value>Solicitudes de reunión</value>
+  </data>
+  <data name="Start_Time" xml:space="preserve">
+    <value>Hora de inicio</value>
+  </data>
+  <data name="End_Time" xml:space="preserve">
+    <value>Hora de finalización</value>
+  </data>
+   <data name="Meeting_ID" xml:space="preserve">
+    <value>ID de reunión</value>
+  </data>
+  <data name="Meeting_Duration" xml:space="preserve">
+    <value>Duración de la reunión</value>
+  </data>
+    <data name="Meeting_Participants" xml:space="preserve">
+    <value>Participantes de la reunión</value>
+  </data>
+  <data name="Milo" xml:space="preserve">
+    <value>Milo</value>
+  </data>
+  <data name="Meeting_Title" xml:space="preserve">
+    <value>Título de la reunión</value>
+  </data>
+  <data name="Meeting_Agenda" xml:space="preserve">
+    <value>Agenda de la reunión</value>
+  </data>
+  <data name="Select_participant_from_server" xml:space="preserve">
+    <value>¡Seleccione participantes del servidor!</value>
+  </data>
+  <data name="Meeting_Participants" xml:space="preserve">
+    <value>Participantes de la reunión</value>
+  </data>
+  <data name="Participants_Note" xml:space="preserve">
+    <value>Agregue los participantes como sus direcciones de correo electrónico separadas por el símbolo ','.</value>
+  </data>
+    <data name="Note" xml:space="preserve">
+    <value>NOTA</value>
+  </data>
+  <data name="Meeting_History" xml:space="preserve">
+    <value>Historial de reuniones</value>
+  </data>
+  <data name="No_meetings" xml:space="preserve">
+    <value>No hay reuniones para mostrar</value>
+  </data>
+  <data name="Enter_Email_Name" xml:space="preserve">
+    <value>Ingrese correo electrónico / nombre</value>
+  </data>
+  <data name="User_Profile" xml:space="preserve">
+    <value>Perfil del usuario</value>
+  </data>
+  <data name="Pin" xml:space="preserve">
+    <value>Alfiler</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Número de teléfono</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Create_Meeting" xml:space="preserve">
+    <value>Crear reunión</value>
+  </data>
+  <data name="Update_Meeting" xml:space="preserve">
+    <value>Reunión de actualización</value>
+  </data>
+  <data name="All_Field_Mandatory" xml:space="preserve">
+    <value>Por favor llena todos los espacios. Todos los campos son obligatorios.</value>
+  </data>
+  <data name="Invalid_Email" xml:space="preserve">
+    <value>Introduzca direcciones de correo electrónico válidas como participante de la reunión.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ServerInstability" xml:space="preserve">
+    <value>No se puede procesar su solicitud, vuelva a intentarlo.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Takeway_not_available" xml:space="preserve">
+    <value>Takeway no disponible para esta reunión. Comuníquese con el soporte</value>
+  </data>
+  <data name="Email_Not_Entered" xml:space="preserve">
+    <value>Por favor complete la dirección de correo electrónico.</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Casa</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Terminar</value>
+  </data>
+  <data name="Add_as_guest" xml:space="preserve">
+    <value>Agregar como invitada</value>
+  </data>
+  <data name="Password_Cnf_Password_NotMatching" xml:space="preserve">
+    <value>Contraseña y confirmar Contraseña que no coincide.</value>
+  </data>
+  <data name="ImageSize_Large" xml:space="preserve">
+    <value>Actualice la imagen de perfil a menos de 2 MB</value>
+  </data>
+  <data name="Capture_From_Camera" xml:space="preserve">
+    <value>Capturar desde la cámara</value>
+  </data>
+  <data name="Browse_From_Gallery" xml:space="preserve">
+    <value>Navegar desde la galería</value>
+  </data>
+  <data name="No_Camera" xml:space="preserve">
+    <value>No Camaras</value>
+  </data>
+  <data name="No_Camera_Msg" xml:space="preserve">
+    <value>:( No hay cámara disponible.</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Procesando</value>
+  </data>
+  <data name="LogOutAreYouSure" xml:space="preserve">
+    <value>¿Estás segura de que quieres cerrar sesión?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>sí</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+</root>

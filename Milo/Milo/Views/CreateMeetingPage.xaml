@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Milo.Views.CreateMeetingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Milo.Controls"
+    xmlns:ext="clr-namespace:Milo.Extensions"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:prism="http://prismlibrary.com"
+    ios:Page.UseSafeArea="True"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource AppBackground}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image
+            Margin="15"
+            HorizontalOptions="Start"
+            Source="{StaticResource BackImage}"
+            VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+            </Image.GestureRecognizers>
+        </Image>
+        <ScrollView>
+            <StackLayout Margin="20,0,20,0" HorizontalOptions="FillAndExpand">
+
+                <Image
+                    HeightRequest="200"
+                    HorizontalOptions="Center"
+                    Source="remote_team_rafiki1" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="{Binding PageTitle}"
+                    TextColor="{StaticResource AppTextColor}" />
+                <StackLayout>
+                    <controls:ClassicEntry
+                        x:Name="meetingTitle"
+                        Margin="5,5"
+                        BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HeightRequest="40"
+                        Keyboard="Text"
+                        Placeholder="{ext:Translate Meeting_Title}"
+                        PlaceholderColor="{StaticResource AppTextHintColor}"
+                        Text="{Binding MeetingTitle}"
+                        TextColor="{StaticResource AppTextColor}"
+                        VerticalTextAlignment="Center"
+                        Visual="Material" />
+                    <controls:ClassicEntry
+                        x:Name="meetingAgenda"
+                        Margin="5,5"
+                        BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HeightRequest="40"
+                        Keyboard="Text"
+                        Placeholder="{ext:Translate Meeting_Agenda}"
+                        PlaceholderColor="{StaticResource AppTextHintColor}"
+                        Text="{Binding MeetingAgenda}"
+                        TextColor="{StaticResource AppTextColor}"
+                        VerticalTextAlignment="Center"
+                        Visual="Material" />
+
+                    <Button
+                        BackgroundColor="Transparent"
+                        Command="{Binding SelectUserCommand}"
+                        Text="{ext:Translate Select_participant_from_server}"
+                        TextColor="Green"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Editor
+                        x:Name="meetingParticipants"
+                        Margin="5,5"
+                        BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HeightRequest="100"
+                        Keyboard="Text"
+                        NavigationPage.HasNavigationBar="False"
+                        Placeholder="{ext:Translate Meeting_Participants}"
+                        PlaceholderColor="{StaticResource AppTextHintColor}"
+                        Text="{Binding MeetingParticipants}"
+                        TextColor="{StaticResource AppTextColor}"
+                        Visual="Material" />
+                    <Label
+                        Margin="10,0,10,0"
+                        FontSize="Micro"
+                        LineBreakMode="WordWrap"
+                        TextColor="{StaticResource AppTextColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontAttributes="Bold"
+                                    Text="{ext:Translate Note}"
+                                    TextColor="{StaticResource AppTextColor}" />
+                                <Span
+                                    FontAttributes="Bold"
+                                    Text=" : "
+                                    TextColor="{StaticResource AppTextColor}" />
+                                <Span Text="{ext:Translate Participants_Note}" TextColor="{StaticResource AppTextColor}" />
+
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <DatePicker
+                            x:Name="meetingStartDate"
+                            Grid.Column="0"
+                            Margin="5,5"
+                            BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                            Date="{Binding MeetingStartDate}"
+                            Format="D"
+                            TextColor="{StaticResource AppTextColor}" />
+                        <TimePicker
+                            x:Name="meetingStartTime"
+                            Grid.Column="1"
+                            Margin="5,5"
+                            BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                            Format="T"
+                            TextColor="{StaticResource AppTextColor}"
+                            Time="{Binding MeetingStartTime}" />
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <DatePicker
+                            x:Name="meetingEndDate"
+                            Grid.Column="0"
+                            Margin="5,5"
+                            BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                            Date="{Binding MeetingEndDate}"
+                            Format="D"
+                            TextColor="{StaticResource AppTextColor}" />
+                        <TimePicker
+                            x:Name="meetingEndTime"
+                            Grid.Column="1"
+                            Margin="5,5"
+                            BackgroundColor="{StaticResource AppTextBackgroundColor}"
+                            Format="T"
+                            TextColor="{StaticResource AppTextColor}"
+                            Time="{Binding MeetingEndTime}" />
+                    </Grid>
+                    <ImageButton
+                        BackgroundColor="Transparent"
+                        Command="{Binding CreateMeetingCommand}"
+                        Source="submit_button"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </StackLayout>
+</ContentPage>

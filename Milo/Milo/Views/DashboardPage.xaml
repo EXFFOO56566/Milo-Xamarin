@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Milo.Views.DashboardPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:circleImage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:ext="clr-namespace:Milo.Extensions"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:prism="http://prismlibrary.com"
+    x:Name="DashBoardPage"
+    ios:Page.UseSafeArea="True"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource AppBackground}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout
+            Margin="10,20,20,0"
+            Orientation="Horizontal"
+            VerticalOptions="Center">
+            <Image
+                Aspect="AspectFit"
+                HorizontalOptions="Start"
+                Source="group_1535"
+                VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenCloseNavCommand}" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                <Label
+                    Text="{Binding UserProfile.name}"
+                    TextColor="{StaticResource AppTextColor}"
+                    VerticalOptions="Center" />
+                <circleImage:CircleImage
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    HorizontalOptions="Start"
+                    Source="{Binding UserProfile.ImageLink}"
+                    VerticalOptions="Center"
+                    WidthRequest="30" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowProfileCommand}" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+            <Label
+                Margin="10,0,0,0"
+                FontAttributes="Bold"
+                FontSize="Large"
+                Text="{ext:Translate Meeting_Requests}"
+                TextColor="{StaticResource AppTextColor}" />
+            <Image
+                Margin="0,0,20,0"
+                Aspect="AspectFit"
+                HorizontalOptions="EndAndExpand"
+                Source="refresh"
+                VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RefreshCommand}" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="340" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <CollectionView
+                Grid.Row="0"
+                Margin="10"
+                ItemsSource="{Binding AcceptedMeetings}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="0,0,-60,0">
+                            <Frame
+                                Margin="10"
+                                BackgroundColor="Transparent"
+                                BorderColor="White"
+                                CornerRadius="20">
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image
+                                            Grid.Column="0"
+                                            Margin="5"
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Center"
+                                            Source="view_button"
+                                            VerticalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Path=BindingContext.AcceptedBookingViewCommand, Source={x:Reference DashBoardPage}}"
+                                                    CommandParameter="{Binding .}"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image
+                                            Grid.Column="1"
+                                            Margin="5"
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Center"
+                                            Source="agenda_button"
+                                            VerticalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Path=BindingContext.AcceptedBookingAgendaCommand, Source={x:Reference DashBoardPage}}"
+                                                    CommandParameter="{Binding .}"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image
+                                            Grid.Column="2"
+                                            Margin="5"
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Center"
+                                            Source="takeways_button"
+                                            VerticalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Path=BindingContext.AcceptedBookingTakeawayCommand, Source={x:Reference DashBoardPage}}"
+                                                    CommandParameter="{Binding .}"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image
+                                            Grid.Column="3"
+                                            Margin="5"
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Center"
+                                            Source="edit_button"
+                                            VerticalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Path=BindingContext.AcceptedBookingEditCommand, Source={x:Reference DashBoardPage}}"
+                                                    CommandParameter="{Binding .}"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image
+                                            Grid.Column="4"
+                                            Margin="5"
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Center"
+                                            Source="share_button"
+                                            VerticalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Path=BindingContext.AcceptedBookingShareCommand, Source={x:Reference DashBoardPage}}"
+                                                    CommandParameter="{Binding .}"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                    <Grid>
+                                        <StackLayout>
+                                            <Label Text="{Binding meeting_details.title}" TextColor="{StaticResource AppTextColor}" />
+                                            <Label LineBreakMode="WordWrap">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span
+                                                            FontAttributes="Bold"
+                                                            Text="{ext:Translate Start_Time}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontAttributes="Bold"
+                                                            Text=" : "
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text="{Binding meeting_details.meeting_start_date}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text=" ("
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text="{Binding meeting_details.starting_time}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text=")"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label LineBreakMode="WordWrap">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span
+                                                            FontAttributes="Bold"
+                                                            Text="{ext:Translate End_Time}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontAttributes="Bold"
+                                                            Text=" : "
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text="{Binding meeting_details.meeting_end_date}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text=" ("
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text="{Binding meeting_details.ending_time}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text=")"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label LineBreakMode="WordWrap">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span
+                                                            FontAttributes="Bold"
+                                                            Text="{ext:Translate Meeting_ID}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontAttributes="Bold"
+                                                            Text=" : "
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text="{Binding meeting_details.meeting_id}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label LineBreakMode="WordWrap">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span
+                                                            FontAttributes="Bold"
+                                                            Text="{ext:Translate Meeting_Duration}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontAttributes="Bold"
+                                                            Text=" : "
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text="{Binding meeting_details.DurationInMins}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label
+                                                LineBreakMode="WordWrap"
+                                                MaxLines="2"
+                                                WidthRequest="370">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span
+                                                            FontAttributes="Bold"
+                                                            Text="{ext:Translate Meeting_Participants}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontAttributes="Bold"
+                                                            Text=" : "
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                        <Span
+                                                            FontSize="Small"
+                                                            Text="{Binding CommaSeparatedParticipants}"
+                                                            TextColor="{StaticResource AppTextColor}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                                <Image
+                                                    Aspect="AspectFit"
+                                                    Source="join_button"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer
+                                                            Command="{Binding Path=BindingContext.AcceptedBookingJoinCommand, Source={x:Reference DashBoardPage}}"
+                                                            CommandParameter="{Binding .}"
+                                                            NumberOfTapsRequired="1" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                                <Image
+                                                    Margin="0,-10,0,0"
+                                                    Aspect="AspectFit"
+                                                    Source="cancel_button"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer
+                                                            Command="{Binding Path=BindingContext.AcceptedBookingCancelCommand, Source={x:Reference DashBoardPage}}"
+                                                            CommandParameter="{Binding .}"
+                                                            NumberOfTapsRequired="1" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <BoxView
+                Grid.Row="1"
+                Margin="10,0,10,0"
+                HeightRequest="1"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center"
+                WidthRequest="50"
+                Color="{StaticResource AppTextHintColor}" />
+            <CollectionView
+                Grid.Row="2"
+                Margin="10"
+                ItemsSource="{Binding InvitedMeetings}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{StaticResource UpcomingMeetingItemBackground}" CornerRadius="10">
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Column="0"
+                                        Margin="5"
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Center"
+                                        Source="view_button"
+                                        VerticalOptions="Center">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Path=BindingContext.InvitedBookingViewCommand, Source={x:Reference DashBoardPage}}"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Image
+                                        Grid.Column="1"
+                                        Margin="5"
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Center"
+                                        Source="agenda_button"
+                                        VerticalOptions="Center">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Path=BindingContext.InvitedBookingAgendaCommand, Source={x:Reference DashBoardPage}}"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Image
+                                        Grid.Column="2"
+                                        Margin="5"
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Center"
+                                        Source="takeways_button"
+                                        VerticalOptions="Center">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Path=BindingContext.InvitedBookingTakeawayCommand, Source={x:Reference DashBoardPage}}"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Image
+                                        Grid.Column="3"
+                                        Margin="5"
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Center"
+                                        Source="edit_button"
+                                        VerticalOptions="Center">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Path=BindingContext.InvitedBookingEditCommand, Source={x:Reference DashBoardPage}}"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Image
+                                        Grid.Column="4"
+                                        Margin="5"
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Center"
+                                        Source="share_button"
+                                        VerticalOptions="Center">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Path=BindingContext.InvitedBookingShareCommand, Source={x:Reference DashBoardPage}}"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                                <Grid>
+                                    <StackLayout>
+                                        <Label Text="{Binding meeting_details.title}" TextColor="{StaticResource AppTextColor}" />
+                                        <Label LineBreakMode="WordWrap">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span
+                                                        FontAttributes="Bold"
+                                                        Text="{ext:Translate Start_Time}"
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontAttributes="Bold"
+                                                        Text=" : "
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontSize="Small"
+                                                        Text="{Binding meeting_details.meeting_start_date}"
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontSize="Small"
+                                                        Text=" ("
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontSize="Small"
+                                                        Text="{Binding meeting_details.starting_time}"
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontSize="Small"
+                                                        Text=")"
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label LineBreakMode="WordWrap">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span
+                                                        FontAttributes="Bold"
+                                                        Text="{ext:Translate End_Time}"
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontAttributes="Bold"
+                                                        Text=" : "
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontSize="Small"
+                                                        Text="{Binding meeting_details.meeting_end_date}"
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontSize="Small"
+                                                        Text=" ("
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontSize="Small"
+                                                        Text="{Binding meeting_details.ending_time}"
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontSize="Small"
+                                                        Text=")"
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label LineBreakMode="WordWrap">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span
+                                                        FontAttributes="Bold"
+                                                        Text="{ext:Translate Meeting_ID}"
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontAttributes="Bold"
+                                                        Text=" : "
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                    <Span
+                                                        FontSize="Small"
+                                                        Text="{Binding meeting_details.meeting_id}"
+                                                        TextColor="{StaticResource AppTextColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <StackLayout
+                                            HorizontalOptions="Center"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="End">
+                                            <Image
+                                                Aspect="AspectFit"
+                                                HorizontalOptions="Center"
+                                                Source="accept_button"
+                                                VerticalOptions="Center">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Command="{Binding Path=BindingContext.InvitedBookingAcceptCommand, Source={x:Reference DashBoardPage}}"
+                                                        CommandParameter="{Binding .}"
+                                                        NumberOfTapsRequired="1" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Image
+                                                Margin="0,-10,0,0"
+                                                Aspect="AspectFit"
+                                                HorizontalOptions="Center"
+                                                Source="reject_button"
+                                                VerticalOptions="Center">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Command="{Binding Path=BindingContext.InvitedBookingRejectCommand, Source={x:Reference DashBoardPage}}"
+                                                        CommandParameter="{Binding .}"
+                                                        NumberOfTapsRequired="1" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+
+
+
+
+    </StackLayout>
+</ContentPage>

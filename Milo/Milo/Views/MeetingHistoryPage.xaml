@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Milo.Views.MeetingHistoryPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:circleImage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:ext="clr-namespace:Milo.Extensions"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:prism="http://prismlibrary.com"
+    x:Name="DashBoardPage"
+    ios:Page.UseSafeArea="True"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource AppBackground}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <Image
+            Margin="15"
+            HorizontalOptions="Start"
+            Source="{StaticResource BackImage}"
+            VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+            </Image.GestureRecognizers>
+        </Image>
+
+        <Label
+            Margin="10,0,0,0"
+            FontAttributes="Bold"
+            FontSize="Large"
+            Text="{ext:Translate Meeting_History}"
+            TextColor="{StaticResource AppTextColor}" />
+
+        <CollectionView
+            Margin="10"
+            EmptyView="{ext:Translate No_meetings}"
+            ItemsSource="{Binding MeetingHistory}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="{StaticResource UpcomingMeetingItemBackground}" CornerRadius="10">
+                        <StackLayout Orientation="Horizontal">
+
+                            <circleImage:CircleImage
+                                HeightRequest="70"
+                                HorizontalOptions="Start"
+                                Source="{Binding ImageLink}"
+                                VerticalOptions="Center"
+                                WidthRequest="70" />
+
+                            <StackLayout>
+                                <Label Text="{Binding meeting_title}" TextColor="{StaticResource AppTextColor}" />
+                                <Label Text="{Binding agenda}" TextColor="{StaticResource AppTextColor}" />
+
+                                <Label LineBreakMode="WordWrap">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontAttributes="Bold"
+                                                Text="{Binding FormattedStartDateTime}"
+                                                TextColor="{StaticResource AppTextColor}" />
+                                            <Span Text=" | " TextColor="{StaticResource AppTextColor}" />
+                                            <Span Text="{Binding DurationInMins}" TextColor="{StaticResource AppTextColor}" />
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                            </StackLayout>
+                        </StackLayout>
+
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
